@@ -20,21 +20,15 @@ if($row = mysqli_query($connection,$title)) {
 }
 ?>
 
-
-
 <html>
 <head>
-    <title>Form</title>
-<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+    <title>Credit Transfer</title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
 <body>
-
-
-
-
 
 <ul class="nav nav-tabs container" style="padding: 20px">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="../../index.html">Home</a>
+        <a class="nav-link active" data-toggle="tab" href="../../index.php">Home</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="../users.php">Users</a>
@@ -44,16 +38,12 @@ if($row = mysqli_query($connection,$title)) {
     </li>
 </ul>
 
-
-
-
-
 <?php
-
-
 
 mysqli_autocommit($connection, FALSE);
 
+
+if (isset($_POST['submit'])) {
     if ($_POST['submit'] && is_numeric($_POST['Credits'])) {
 
 
@@ -73,12 +63,13 @@ mysqli_autocommit($connection, FALSE);
 
 
     }
+}
+
 $result = mysqli_query($connection, "SELECT * FROM users");
 while ($row = mysqli_fetch_assoc($result)) {
     $users[] = $row;
 
 }
-
 
 mysqli_close($connection);
 ?>
@@ -109,14 +100,14 @@ mysqli_close($connection);
 
 </form>
 <center><div class="container">
-    <h3>ACCOUNT CreditsS</h3>
-<table border=1>
-    <?php
-    foreach ($users as $u) {
-        echo "<tr><td>" . $u['UserId'] . "</td><td>" . $u['Credits'] . "</td></tr>";
-    }
-    ?>
-</table>
+        <h3>ACCOUNT CreditsS</h3>
+        <table border=1>
+            <?php
+            foreach ($users as $u) {
+                echo "<tr><td>" . $u['UserId'] . "</td><td>" . $u['Credits'] . "</td></tr>";
+            }
+            ?>
+        </table>
 
     </div></center>
 

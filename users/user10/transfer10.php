@@ -20,24 +20,15 @@ if($row = mysqli_query($connection,$title)) {
 }
 ?>
 
-
-
 <html>
 <head>
-    <title> Users List</title>
-</head>
-<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
-
-
+    <title>Credit Transfer</title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
 <body>
-
-
-
-
 
 <ul class="nav nav-tabs container" style="padding: 20px">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="../../index.html">Home</a>
+        <a class="nav-link active" data-toggle="tab" href="../../index.php">Home</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="../users.php">Users</a>
@@ -47,36 +38,78 @@ if($row = mysqli_query($connection,$title)) {
     </li>
 </ul>
 
+<?php
+
+mysqli_autocommit($connection, FALSE);
 
 
-<form class="container card border-info mb-3" style="padding-top: 10px; padding-bottom: 10px; top: 100px">
-    <fieldset>
-        <legend>Transfer</legend>
-        <div class="form-group">
-            <label for="userid">User ID</label>
-            <input type="number" class="form-control" id="userid" placeholder="Enter UserID">
-            <small id="userid" class="form-text text-muted">Enter valid User ID.</small>
-        </div>
-        <div class="form-group">
-            <label for="username">User Name</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter UserName">
-            <small id="username" class="form-text text-muted">Enter valid User Name.</small>
-        </div>
-        <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="amount" class="form-control" id="amount" placeholder="Amount">
-        </div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
+if (isset($_POST['submit'])) {
+    if ($_POST['submit'] && is_numeric($_POST['Credits'])) {
+
+
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits + " . $_POST['Credits'] . " WHERE UserId = " . $_POST['to']);
+        if ($result !== TRUE) {
+            mysqli_rollback($connection);
+        }
+
+
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits - " . $_POST['Credits'] . " WHERE UserId = " . $_POST['from']);
+        if ($result !== TRUE) {
+            mysqli_rollback($connection);
+        }
+
+
+        mysqli_commit($connection);
+
+
+    }
+}
+
+$result = mysqli_query($connection, "SELECT * FROM users");
+while ($row = mysqli_fetch_assoc($result)) {
+    $users[] = $row;
+
+}
+
+mysqli_close($connection);
+?>
+
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="container card border-info mb-3" style="padding-top: 10px; padding-bottom: 10px; top: 5px">
+    Transfer <input type="text" name="Credits" size="5" class="form-control" placeholder="Enter credits"> from
+
+    <select name="from" class="container form-control">
+        <?php
+        foreach ($users as $u) {
+            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+        }
+        ?>
+    </select>
+
+    to
+
+    <select name="to" class="container form-control">
+        <?php
+        foreach ($users as $u) {
+            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+        }
+        ?>
+    </select><br>
+
+    <center><input type="submit" name="submit" value="Transfer" class="btn btn-primary close" ></center>
+
 </form>
+<center><div class="container">
+        <h3>ACCOUNT CreditsS</h3>
+        <table border=1>
+            <?php
+            foreach ($users as $u) {
+                echo "<tr><td>" . $u['UserId'] . "</td><td>" . $u['Credits'] . "</td></tr>";
+            }
+            ?>
+        </table>
 
-
-
-
-
-
-
+    </div></center>
 
 
 </body>

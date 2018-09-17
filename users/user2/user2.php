@@ -25,7 +25,7 @@ try{
 
 <ul class="nav nav-tabs container" style="padding: 20px">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="../../index.html">Home</a>
+        <a class="nav-link active" data-toggle="tab" href="../../index.php">Home</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="../users.php">Users</a>
@@ -46,7 +46,6 @@ try{
             $row=mysqli_fetch_row($users);
 
             printf("%s ",$row[1]); ?></h4>
-        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
     </div>
 </div>
 
@@ -57,19 +56,9 @@ try{
         <div class="card-body">
 
 
-            <a class="btn btn-primary btn-lg" href="transfer2.php" role="button">Form</a>
+            <a class="btn btn-primary btn-lg" href="transfer2.php" role="button">Transfer Credits</a>
 
-            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
