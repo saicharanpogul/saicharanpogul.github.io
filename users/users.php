@@ -21,7 +21,7 @@ try{
 
 <ul class="nav nav-tabs container" style="padding: 20px">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="../index.html">Home</a>
+        <a class="nav-link active" data-toggle="tab" href="../index.php">Home</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="users.php">Users</a>
