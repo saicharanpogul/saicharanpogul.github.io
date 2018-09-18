@@ -81,7 +81,7 @@ mysqli_close($connection);
     <select name="from" class="container form-control">
         <?php
         foreach ($UserName = "SELECT UserName FROM users" as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+            echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
     </select>
@@ -91,7 +91,7 @@ mysqli_close($connection);
     <select name="to" class="container form-control">
         <?php
         foreach ($UserName = "SELECT UserName FROM users" as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+            echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
     </select><br>
