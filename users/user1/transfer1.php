@@ -65,11 +65,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-$result = mysqli_query($connection, "SELECT * FROM users");
-while ($row = mysqli_fetch_assoc($result)) {
-    $users[] = $row;
 
-}
 
 mysqli_close($connection);
 ?>
@@ -80,8 +76,10 @@ mysqli_close($connection);
 
     <select name="from" class="container form-control">
         <?php
-        foreach ($users as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+        $result = mysqli_query($connection, "SELECT * FROM users");
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value=\"" . ['UserId'] . "\">" . ['UserName'] . "</option>";
+
         }
         ?>
     </select>
@@ -90,8 +88,10 @@ mysqli_close($connection);
 
     <select name="to" class="container form-control">
         <?php
-        foreach ($users as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
+        $result = mysqli_query($connection, "SELECT * FROM users");
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value=\"" . ['UserId'] . "\">" . ['UserName'] . "</option>";
+
         }
         ?>
     </select><br>
