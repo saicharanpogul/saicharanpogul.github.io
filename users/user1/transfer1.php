@@ -80,7 +80,7 @@ mysqli_close($connection);
 
     <select name="from" class="container form-control">
         <?php
-        foreach ($users as $u) {
+        foreach ($users[1] as $u) {
             echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
@@ -90,7 +90,7 @@ mysqli_close($connection);
 
     <select name="to" class="container form-control">
         <?php
-        foreach ($users as $u) {
+        foreach ($users[1] as $u) {
             echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
