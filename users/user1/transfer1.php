@@ -47,13 +47,13 @@ if (isset($_POST['submit'])) {
     if ($_POST['submit'] && is_numeric($_POST['Credits'])) {
 
 
-        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits + " . $_POST['Credits'] . " WHERE UserName = " . $_POST['to']);
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits + " . $_POST['Credits'] . " WHERE UserId = " . $_POST['to']);
         if ($result !== TRUE) {
             mysqli_rollback($connection);
         }
 
 
-        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits - " . $_POST['Credits'] . " WHERE UserName = " . $_POST['from']);
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits - " . $_POST['Credits'] . " WHERE UserId = " . $_POST['from']);
         if ($result !== TRUE) {
             mysqli_rollback($connection);
         }
@@ -81,7 +81,7 @@ mysqli_close($connection);
     <select name="from" class="container form-control">
         <?php
         foreach ($users as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserName'] . "</option>";
+            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
         }
         ?>
     </select>
@@ -91,7 +91,7 @@ mysqli_close($connection);
     <select name="to" class="container form-control">
         <?php
         foreach ($users as $u) {
-            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserName'] . "</option>";
+            echo "<option value=\"" . $u['UserId'] . "\">" . $u['UserId'] . "</option>";
         }
         ?>
     </select><br>
