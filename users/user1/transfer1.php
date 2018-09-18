@@ -64,7 +64,9 @@ if (isset($_POST['submit'])) {
 
     }
 }
-
+$result = mysqli_query($connection, "SELECT * FROM users");
+while ($row = mysqli_fetch_assoc($result)) {
+$users = $row;
 
 
 mysqli_close($connection);
