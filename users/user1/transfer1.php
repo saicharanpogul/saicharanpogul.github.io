@@ -104,7 +104,7 @@ mysqli_close($connection);
         <table border=1>
             <?php
             foreach ($users as $u) {
-                echo "<tr><td>" . $u['UserId'] . "</td><td>" . $u['Credits'] . "</td></tr>";
+                echo "<tr><td>" . $u['UserName'] . "</td><td>" . $u['Credits'] . "</td></tr>";
             }
             ?>
         </table>
