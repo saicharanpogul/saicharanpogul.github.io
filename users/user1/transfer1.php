@@ -101,7 +101,7 @@ mysqli_close($connection);
 </form>
 <center><div class="container">
         <h3>ACCOUNT CreditsS</h3>
-        <table border=1>
+        <table border=1 class="table table-hover">
             <?php
             foreach ($users as $u) {
                 echo "<tr class="table-dark"><td>" . $u['UserId'] . "</td><td>" .$u['UserName']. "</td><td>" . $u['Credits'] . "</td></tr>";
