@@ -100,7 +100,7 @@ mysqli_close($connection);
 
 </form>
 <center><div class="container">
-        <h3>ACCOUNT CreditsS</h3>
+        <h3>User Credits</h3>
         <table border=1 class="table table-hover">
             <?php
             foreach ($users as $u) {
