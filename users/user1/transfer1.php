@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
 
 $result = mysqli_query($connection, "SELECT UserId, UserName, Credits FROM users");
 while ($row = mysqli_fetch_assoc($result)) {
-    $users[1] = $row;
+    $users = $row[1];
 
 }
 
@@ -80,7 +80,7 @@ mysqli_close($connection);
 
     <select name="from" class="container form-control">
         <?php
-        foreach ($users[1] as $u) {
+        foreach ($users as $u) {
             echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
@@ -90,7 +90,7 @@ mysqli_close($connection);
 
     <select name="to" class="container form-control">
         <?php
-        foreach ($users[1] as $u) {
+        foreach ($users as $u) {
             echo "<option value=\"" . $u['UserName'] . "\">" . $u['UserName'] . "</option>";
         }
         ?>
