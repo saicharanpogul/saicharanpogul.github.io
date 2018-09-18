@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-$result = mysqli_query($connection, "SELECT UserName FROM users");
+$result = mysqli_query($connection, "SELECT UserId, UserName FROM users");
 while ($row = mysqli_fetch_assoc($result)) {
     $users[] = $row;
 
