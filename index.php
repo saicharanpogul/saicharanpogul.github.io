@@ -9,7 +9,7 @@
 
     <center><div class="jumbotron">
         <h1 class="display-3">Hello!</h1>
-        <p class="lead">This the the simple website with 10 users who transfer credits to each other</p>
+        <p class="lead">This is the simple website with 10 users who transfer credits to each other</p>
         <hr class="my-4">
         <p>View Users</p>
         <p class="lead">
