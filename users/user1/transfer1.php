@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
 
 $result = mysqli_query($connection, "SELECT * FROM users");
 while ($row = mysqli_fetch_assoc($result)) {
-    $users = $row;
+    $users[] = $row;
 
 }
 
@@ -101,10 +101,10 @@ mysqli_close($connection);
 </form>
 <center><div class="container">
         <h3>ACCOUNT CreditsS</h3>
-        <table border=1>
+        <table border=1 class="table table-hover">
             <?php
             foreach ($users as $u) {
-                echo "<tr><td>" . $u['UserName'] . "</td><td>" . $u['Credits'] . "</td></tr>";
+                echo "<tr><td>" . $u['UserId'] . "</td><td>" .$u['UserName']. "</td><td>" . $u['Credits'] . "</td></tr>";
             }
             ?>
         </table>
