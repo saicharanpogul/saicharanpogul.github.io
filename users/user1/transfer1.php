@@ -47,13 +47,13 @@ if (isset($_POST['submit'])) {
     if ($_POST['submit'] && is_numeric($_POST['Credits'])) {
 
 
-        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits + " . $_POST['Credits'] . " WHERE UserId = " . $_POST['to']);
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits + " . $_POST['Credits'] . " WHERE UserName = " . $_POST['to']);
         if ($result !== TRUE) {
             mysqli_rollback($connection);
         }
 
 
-        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits - " . $_POST['Credits'] . " WHERE UserId = " . $_POST['from']);
+        $result = mysqli_query($connection, "UPDATE users SET Credits = Credits - " . $_POST['Credits'] . " WHERE UserName = " . $_POST['from']);
         if ($result !== TRUE) {
             mysqli_rollback($connection);
         }
