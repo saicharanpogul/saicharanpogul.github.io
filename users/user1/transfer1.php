@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
 }
 
 $result = mysqli_query($connection, "SELECT UserId, UserName, Credits FROM users");
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch()) {
     $users = $row;
 
 }
