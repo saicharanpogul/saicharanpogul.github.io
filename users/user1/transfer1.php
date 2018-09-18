@@ -10,7 +10,7 @@ try{
 }catch(Exception $e){
     $error = $e->getMessage();
 }
-$title = "SELECT UserName FROM users";
+$title = "SELECT UserName, USerId FROM users";
 
 if($row = mysqli_query($connection,$title)) {
 
@@ -34,7 +34,7 @@ if($row = mysqli_query($connection,$title)) {
         <a class="nav-link" data-toggle="tab" href="../users.php">Users</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="../user1/user1.php"><?php printf("%s ", $row[0]); ?></a>
+        <a class="nav-link" data-toggle="tab" href="../user1/user1.php"><?php printf("%s ", $row[0]->$row[1]); ?></a>
     </li>
 </ul>
 
